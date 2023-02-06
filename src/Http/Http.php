@@ -52,6 +52,14 @@ class Http extends Client
         return $this->unwrapResponse(parent::get($url, $params), $returnRaw);
     }
 
+    public function cusRequest($method, $url, $options = [], $headers = [], $returnRaw = false)
+    {
+        if ($headers) {
+            $this->addMiddleware($this->headerMiddleware($headers));
+        }
+        return $this->unwrapResponse(parent::request($url, $options), $returnRaw);
+    }
+
     /**
      * 用 json 的方式发送 post 请求
      * @param $endpoint

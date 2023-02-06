@@ -36,7 +36,7 @@ class Auth extends BaseService
         $query    = $this->app->http->generateParams($endpoint, $params, false);
         $options  = ['headers' => [], 'query' => $query,];
         $url      = $this->app->getBaseUri() . $endpoint;
-        $result   = $this->app->http->request('get', $url, $options);
+        $result   = $this->app->http->cusRequest('get', $url, $options);
         return $result;
     }
 
@@ -59,7 +59,7 @@ class Auth extends BaseService
         $options  = ['headers' => [], 'query' => $query,];
         $url      = $this->app->getBaseUri() . $endpoint;
 
-        $result = $this->app->http->request('get', $url, $options);
+        $result = $this->app->http->cusRequest('get', $url, $options);
 
         return $result;
     }
