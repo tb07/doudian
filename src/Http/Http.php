@@ -57,7 +57,7 @@ class Http extends Client
         if ($headers) {
             $this->addMiddleware($this->headerMiddleware($headers));
         }
-        return $this->unwrapResponse(parent::request($url, $options), $returnRaw);
+        return $this->unwrapResponse(parent::request($method,$url, $options), $returnRaw);
     }
 
     /**
