@@ -9,6 +9,8 @@ use Tb07\DouDian\Auth\AuthProvider;
 use Tb07\DouDian\Core\Container;
 use Tb07\DouDian\Http\Http;
 use Tb07\DouDian\Http\HttpProvider;
+use Tb07\DouDian\Order\Plan;
+use Tb07\DouDian\Order\PlanProvider;
 use Tb07\DouDian\Product\Product;
 use Tb07\DouDian\Product\ProductProvider;
 
@@ -19,6 +21,7 @@ use Tb07\DouDian\Product\ProductProvider;
  * @property-read Http $http
  * @property-read Auth $auth
  * @property-read Product $product
+ * @property-read Plan $plan
  * @property-read AfterSale $afterSale
  */
 class DouDian extends Container
@@ -26,9 +29,10 @@ class DouDian extends Container
     protected $baseUri   = 'https://openapi-fxg.jinritemai.com/';//正式环境
     protected $providers = [
         HttpProvider::class,
-        AfterSaleProvider::class,
         ProductProvider::class,
         AuthProvider::class,
+        PlanProvider::class,
+        AfterSaleProvider::class,
     ];
 
     public function getAppKey()
