@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Tb07\DouDian\Order;
+namespace Tb07\DouDian\Plan;
 
 use Tb07\DouDian\Core\BaseService;
 

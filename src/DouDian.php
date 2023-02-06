@@ -9,8 +9,8 @@ use Tb07\DouDian\Auth\AuthProvider;
 use Tb07\DouDian\Core\Container;
 use Tb07\DouDian\Http\Http;
 use Tb07\DouDian\Http\HttpProvider;
-use Tb07\DouDian\Order\Plan;
-use Tb07\DouDian\Order\PlanProvider;
+use Tb07\DouDian\Plan\Plan;
+use Tb07\DouDian\Plan\PlanProvider;
 use Tb07\DouDian\Product\Product;
 use Tb07\DouDian\Product\ProductProvider;
 
