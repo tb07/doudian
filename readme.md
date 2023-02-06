@@ -1,4 +1,4 @@
-# open-kuaishou
+# open-doudian
 
 ## 安装 - install
 

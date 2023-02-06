@@ -1,9 +1,16 @@
 {
   "name": "tb07/dou-dian",
-  "description": "快手sdk",
+  "description": "工具型抖店开放平台SDK",
   "type": "library",
   "minimum-stability": "stable",
-  "homepage": "https://github.com/tb07/open-kuaishou",
+  "keywords": [
+    "抖音开放平台 open api",
+    "工具型抖店开放平台SDK",
+    "抖店开放平台",
+    "doudian",
+    "douyin"
+  ],
+  "homepage": "https://github.com/tb07/doudian",
   "authors": [
     {
       "name": "tb07",
