@@ -91,7 +91,7 @@ class Http extends Client
     protected function unwrapResponse($response, $returnRaw)
     {
         $contentType = $response->getHeaderLine('Content-Type');
-        $contents    = $response->getBody()->getContents();
+        $contents    = $response->getBody();
         if ($returnRaw) {
             return $contents;
         }
