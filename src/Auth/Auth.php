@@ -31,16 +31,12 @@ class Auth extends BaseService
      */
     public function requestAccessToken($code)
     {
-        $params  = [
-            'code'       => $code,
-            'grant_type' => 'authorization_code',
-        ];
-        $query   = $this->app->http->generateParams('token/create', $params, false);
-        $options = [
-            'headers' => [],
-            'query'   => $query,
-        ];
-        $result  = $this->app->http->request('get', 'token/create', $options);
+        $params   = ['code' => $code, 'grant_type' => 'authorization_code',];
+        $endpoint = 'token/create';
+        $query    = $this->app->http->generateParams($endpoint, $params, false);
+        $options  = ['headers' => [], 'query' => $query,];
+        $url      = $this->app->getBaseUri() . $endpoint;
+        $result   = $this->app->http->request('get', $url, $options);
         return $result;
     }
 
@@ -57,46 +53,15 @@ class Auth extends BaseService
      */
     public function refreshAccessToken($refresh_token)
     {
-        $params  = [
-            'refresh_token' => $refresh_token,
-            'grant_type'    => 'refresh_token',
-        ];
-        $query   = $this->generateParams('token/refresh', $params, false);
-        $options = [
-            'headers' => [],
-            'query'   => $query,
-        ];
-        $result  = $this->httpClient()->request('get', 'token/refresh', $options);
+        $params   = ['refresh_token' => $refresh_token, 'grant_type' => 'refresh_token',];
+        $endpoint = 'token/refresh';
+        $query    = $this->app->http->generateParams('token/refresh', $params, false);
+        $options  = ['headers' => [], 'query' => $query,];
+        $url      = $this->app->getBaseUri() . $endpoint;
+
+        $result = $this->app->http->request('get', $url, $options);
 
         return $result;
     }
 
-    /**
-     * 自用型 - 获取access_token.
-     *
-     * @see  https://op.jinritemai.com/docs/guide-docs/9/21
-     * 对于自用型的应用来说，初始化就需要直接 获取 token
-     */
-    public function getShopAccessToken($shop_id)
-    {
-        $params = [
-            'app_id'     => $this->appRunConfig['app_key'],
-            'app_secret' => $this->appRunConfig['app_secret'],
-            'code'       => '',
-            'grant_type' => 'authorization_self',
-            'shop_id'    => $shop_id,
-        ];
-
-        $options = [
-            'headers' => [],
-            'query'   => $params,
-        ];
-        $result  = $this->httpClient()->request('get', 'oauth2/access_token', $options);
-
-        if (0 !== $result['err_no']) {
-            return $result;
-        }
-
-        return $result;
-    }
 }
