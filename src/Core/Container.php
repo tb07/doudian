@@ -71,7 +71,7 @@ class Container extends BaseContainer
 
         $logger = new Logger($this->getConfig()['log']['name'] ?? 'foundation');
 
-        if (!$this->getConfig()['debug'] ?? false || defined('PHPUNIT_RUNNING')) {
+        if (!($this->getConfig()['debug'] ?? false) || defined('PHPUNIT_RUNNING')) {
             $logger->pushHandler(new NullHandler());
         } elseif (($this->getConfig()['log']['handler'] ?? null) instanceof HandlerInterface) {
             $logger->pushHandler($this->getConfig()['log']['handler']);
