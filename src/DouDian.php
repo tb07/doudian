@@ -6,6 +6,8 @@ use Tb07\DouDian\AfterSale\AfterSale;
 use Tb07\DouDian\AfterSale\AfterSaleProvider;
 use Tb07\DouDian\Auth\Auth;
 use Tb07\DouDian\Auth\AuthProvider;
+use Tb07\DouDian\Buyin\Product\BuyinProduct;
+use Tb07\DouDian\Buyin\Product\BuyinProductProvider;
 use Tb07\DouDian\Core\Container;
 use Tb07\DouDian\Http\Http;
 use Tb07\DouDian\Http\HttpProvider;
@@ -21,6 +23,7 @@ use Tb07\DouDian\Product\ProductProvider;
  * @property-read Http $http
  * @property-read Auth $auth
  * @property-read Product $product
+ * @property-read BuyinProduct $buyinProduct
  * @property-read Plan $plan
  * @property-read AfterSale $afterSale
  */
@@ -30,6 +33,7 @@ class DouDian extends Container
     protected $providers = [
         HttpProvider::class,
         ProductProvider::class,
+        BuyinProductProvider::class,
         AuthProvider::class,
         PlanProvider::class,
         AfterSaleProvider::class,

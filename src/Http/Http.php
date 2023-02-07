@@ -23,12 +23,13 @@ class Http extends Client
      * @param false $returnRaw
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function post($endpoint, array $params = [], $headers = [], $returnRaw = false)
+    public function post($endpoint, array $params = [], $headers = [], $isAccessToken = true, $returnRaw = false)
     {
-        $params = $this->generateParams($endpoint, $params);
+        $params = $this->generateParams($endpoint, $params, $isAccessToken);
         if ($headers) {
             $this->addMiddleware($this->headerMiddleware($headers));
         }
+
         $url = $this->app->getBaseUri() . $endpoint;
         return $this->unwrapResponse(parent::post($url, $params), $returnRaw);
     }
@@ -57,7 +58,7 @@ class Http extends Client
         if ($headers) {
             $this->addMiddleware($this->headerMiddleware($headers));
         }
-        return $this->unwrapResponse(parent::request($method,$url, $options), $returnRaw);
+        return $this->unwrapResponse(parent::request($method, $url, $options), $returnRaw);
     }
 
     /**
