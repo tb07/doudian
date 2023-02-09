@@ -4,6 +4,11 @@ namespace Tb07\DouDian\AfterSale;
 
 use Tb07\DouDian\Core\BaseService;
 
+/**
+ * 售后
+ * Class AfterSale
+ * @package Tb07\DouDian\AfterSale
+ */
 class AfterSale extends BaseService
 {
     //商家为订单添加售后备注 afterSaleAddOrderRemark()
