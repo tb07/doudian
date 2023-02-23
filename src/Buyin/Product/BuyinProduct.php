@@ -19,7 +19,7 @@ class BuyinProduct extends BaseService
 
     /**
      * 商品状态查询本接口用于查询某个/批商品是否投放到联盟，以及商品的推广状态和上下架状态
-     * https://op.jinritemai.com/docs/api-docs/61/2867
+     * https://op.jinritemai.com/docs/api-docs/61/1497
      * @param array $params
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
