@@ -6,6 +6,8 @@ use Tb07\DouDian\AfterSale\AfterSale;
 use Tb07\DouDian\AfterSale\AfterSaleProvider;
 use Tb07\DouDian\Auth\Auth;
 use Tb07\DouDian\Auth\AuthProvider;
+use Tb07\DouDian\Buyin\Goods\BuyinGoods;
+use Tb07\DouDian\Buyin\Goods\BuyinGoodsProvider;
 use Tb07\DouDian\Buyin\Order\BuyinOrder;
 use Tb07\DouDian\Buyin\Order\BuyinOrderProvider;
 use Tb07\DouDian\Buyin\Product\BuyinProduct;
@@ -26,6 +28,7 @@ use Tb07\DouDian\Product\ProductProvider;
  * @property-read Auth $auth
  * @property-read Product $product
  * @property-read BuyinProduct $buyinProduct
+ * @property-read BuyinGoods $buyinGoods
  * @property-read Plan $plan
  * @property-read AfterSale $afterSale
  * @property-read BuyinOrder $buyinOrder
@@ -41,6 +44,7 @@ class DouDian extends Container
         PlanProvider::class,
         AfterSaleProvider::class,
         BuyinOrderProvider::class,
+        BuyinGoodsProvider::class,
     ];
 
     public function getAppKey()
