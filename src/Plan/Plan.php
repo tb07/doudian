@@ -61,7 +61,17 @@ class Plan extends BaseService
         return $this->app->http->post('buyin/exclusivePlan', $params);
     }
 
-    //创建/修改商品专属推广计划
+
+    /**
+     * https://op.jinritemai.com/docs/api-docs/61/1935
+     * 店铺专属达人管理
+     * @param array $params
+     * [
+     * op_type            Int32   是  操作类型 0: 添加达人; 1: 开启达人； 2：关闭达人； 3: 删除达人
+     * author_buyin_id   Int64    是  达人百应ID  2324324234
+     * ]
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     */
     public function setBuyinExclusivePlanAuthorOperate(array $params)
     {
         return $this->app->http->post('buyin/exclusivePlanAuthorOperate', $params);
