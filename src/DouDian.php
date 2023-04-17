@@ -15,6 +15,8 @@ use Tb07\DouDian\Buyin\Product\BuyinProductProvider;
 use Tb07\DouDian\Core\Container;
 use Tb07\DouDian\Http\Http;
 use Tb07\DouDian\Http\HttpProvider;
+use Tb07\DouDian\Order\Order;
+use Tb07\DouDian\Order\OrderProvider;
 use Tb07\DouDian\Plan\Plan;
 use Tb07\DouDian\Plan\PlanProvider;
 use Tb07\DouDian\Product\Product;
@@ -32,6 +34,7 @@ use Tb07\DouDian\Product\ProductProvider;
  * @property-read Plan $plan
  * @property-read AfterSale $afterSale
  * @property-read BuyinOrder $buyinOrder
+ * @property-read Order $order
  */
 class DouDian extends Container
 {
@@ -44,6 +47,7 @@ class DouDian extends Container
         PlanProvider::class,
         AfterSaleProvider::class,
         BuyinOrderProvider::class,
+        OrderProvider::class,
         BuyinGoodsProvider::class,
     ];
 
