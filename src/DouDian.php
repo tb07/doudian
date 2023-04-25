@@ -86,4 +86,9 @@ class DouDian extends Container
     {
         return $this->baseUri;
     }
+
+    public function setBaseUri($baseUri)
+    {
+        return $this->baseUri = $baseUri;
+    }
 }
