@@ -4,6 +4,10 @@ namespace Tb07\DouDian;
 
 use Tb07\DouDian\AfterSale\AfterSale;
 use Tb07\DouDian\AfterSale\AfterSaleProvider;
+use Tb07\DouDian\Alliance\Order\AllianceKol;
+use Tb07\DouDian\Alliance\Order\AllianceKolProvider;
+use Tb07\DouDian\Alliance\User\AllianceAuth;
+use Tb07\DouDian\Alliance\User\AllianceAuthProvider;
 use Tb07\DouDian\Auth\Auth;
 use Tb07\DouDian\Auth\AuthProvider;
 use Tb07\DouDian\Buyin\Goods\BuyinGoods;
@@ -38,6 +42,8 @@ use Tb07\DouDian\Product\ProductProvider;
  * @property-read BuyinOrder $buyinOrder
  * @property-read Order $order
  * @property-read BuyinInst $buyinInst
+ * @property-read AllianceAuth $allianceAuth
+ * @property-read AllianceKol $allianceOrder
  */
 class DouDian extends Container
 {
@@ -53,6 +59,8 @@ class DouDian extends Container
         OrderProvider::class,
         BuyinGoodsProvider::class,
         BuyinInstProvider::class,
+        AllianceAuthProvider::class,
+        AllianceKolProvider::class,
     ];
 
     public function getAppKey()
