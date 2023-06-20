@@ -43,7 +43,7 @@ use Tb07\DouDian\Product\ProductProvider;
  * @property-read Order $order
  * @property-read BuyinInst $buyinInst
  * @property-read AllianceAuth $allianceAuth
- * @property-read AllianceKol $allianceOrder
+ * @property-read AllianceKol $allianceKol
  */
 class DouDian extends Container
 {
