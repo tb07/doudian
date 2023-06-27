@@ -17,7 +17,7 @@ class AllianceAuth extends BaseService
     {
         $url   = $this->host . '/platform/oauth/connect';
         $query = [
-            'client_key'    => $this->app->getServiceId(),
+            'client_key'    => $this->app->getAppKey(),
             'response_type' => 'code',
             'scope'         => $scope,
             'redirect_uri'  => $redirect_uri,
@@ -38,7 +38,7 @@ class AllianceAuth extends BaseService
     public function requestAccessToken($code)
     {
         $params   = [
-            'client_secret' => $this->app->getServiceId(),
+            'client_secret' => $this->app->getAppSecret(),
             'client_key'    => $this->app->getAppKey(),
             'code'          => $code,
             'grant_type'    => 'authorization_code',
