@@ -43,9 +43,13 @@ class AllianceAuth extends BaseService
             'code'          => $code,
             'grant_type'    => 'authorization_code',
         ];
+        $headers  = $this->headers();
+        $options  = [
+            'json' => $params,
+        ];
         $endpoint = '/oauth/access_token/';
         $url      = $this->host . $endpoint;
-        $result   = $this->app->http->cusRequest('post', $url, $params);
+        $result   = $this->app->http->cusRequest('post', $url, $options, $headers);
         return $result;
     }
 
@@ -67,9 +71,13 @@ class AllianceAuth extends BaseService
             'refresh_token' => $refresh_token,
             'grant_type'    => 'refresh_token',
         ];
+        $headers  = $this->headers();
+        $options  = [
+            'json' => $params,
+        ];
         $endpoint = '/oauth/refresh_token/';
         $url      = $this->host . $endpoint;
-        $result   = $this->app->http->cusRequest('post', $url, $params);
+        $result   = $this->app->http->cusRequest('post', $url, $options);
         return $result;
     }
 
@@ -84,10 +92,20 @@ class AllianceAuth extends BaseService
             'open_id'      => $openid,
             'access_token' => $this->app->getAccessToken(),
         ];
+        $headers  = $this->headers();
+        $options  = [
+            'json' => $params,
+        ];
         $endpoint = '/oauth/userinfo/';
         $url      = $this->host . $endpoint;
-        $result   = $this->app->http->cusRequest('post', $url, $params);
+        $result   = $this->app->http->cusRequest('post', $url, $options,$headers);
         return $result;
     }
 
+    protected function headers()
+    {
+        return [
+            'Content-Type' => 'application/json',
+        ];
+    }
 }

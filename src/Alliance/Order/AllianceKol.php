@@ -23,14 +23,16 @@ class AllianceKol extends BaseService
      * 获取用户信息
      * @return mixed
      */
-    public function getUserOrderList($params)
+    public function getUserOrderList($params, $openId)
     {
         $headers  = $this->headers();
         $endpoint = '/alliance/kol/orders/';
         $url      = $this->host . $endpoint;
         $options  = [
-            'form_params' => $params,
-            'query'       => [],
+            'json'  => $params,
+            'query' => [
+                'open_id' => $openId,
+            ],
         ];
         $result   = $this->app->http->cusRequest('post', $url, $options, $headers);
         return $result;
@@ -49,8 +51,7 @@ class AllianceKol extends BaseService
     {
         $headers  = $this->headers();
         $options  = [
-            'form_params' => $params,
-            'query'       => [],
+            'query' => $params,
         ];
         $endpoint = '/alliance/kol/reputation/';
         $url      = $this->host . $endpoint;
@@ -75,8 +76,8 @@ class AllianceKol extends BaseService
     {
         $headers  = $this->headers();
         $options  = [
-            'form_params' => $params,
-            'query'       => [
+            'json'  => $params,
+            'query' => [
                 'open_id' => $open_id,
             ],
         ];
@@ -90,7 +91,7 @@ class AllianceKol extends BaseService
     {
         return [
             'access-token' => $this->app->getAccessToken(),
-            'content-type' => 'application/json',
+            'Content-Type' => 'application/json',
         ];
     }
 }
