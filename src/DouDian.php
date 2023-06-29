@@ -46,8 +46,7 @@ use Tb07\DouDian\Product\ProductProvider;
  * @property-read BuyinInst $buyinInst
  * @property-read AllianceAuth $allianceAuth
  * @property-read AllianceKol $allianceKol
- *  * @property-read AllianceOauth $allianceOauth
-
+ * @property-read AllianceOauth $allianceOauth
  */
 class DouDian extends Container
 {
