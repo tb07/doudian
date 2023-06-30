@@ -87,6 +87,25 @@ class AllianceKol extends BaseService
         return $result;
     }
 
+    /**
+     * https://buyin.jinritemai.com/dashboard/service-provider/doc-center?docId=2339&platform=1
+     * @param string $open_id
+     * 获取达人百应id
+     * @param $openid
+     * @return mixed
+     */
+    public function userBuyinId($open_id)
+    {
+        $headers  = $this->headers();
+        $options  = [
+            'query' => ['open_id' => $open_id],
+        ];
+        $endpoint = '/alliance/kol/buyin_id/';
+        $url      = $this->host . $endpoint;
+        $result   = $this->app->http->cusRequest('post', $url, $options, $headers);
+        return $result;
+    }
+
     protected function headers()
     {
         return [
