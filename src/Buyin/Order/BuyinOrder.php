@@ -51,4 +51,19 @@ class BuyinOrder extends BaseService
     {
         return $this->app->http->post('buyin/queryShopAllianceOrder', $params);
     }
+
+    /**
+     * 联盟商家-获取联盟订单
+     * https://op.jinritemai.com/docs/api-docs/61/2829
+     * @param array $params
+     * [
+     *  text        String   是  联系方式密文
+     * ]
+     *
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     */
+    public function decryptContactInfo(array $params)
+    {
+        return $this->app->http->post('/buyin/decryptContactInfo', $params);
+    }
 }
