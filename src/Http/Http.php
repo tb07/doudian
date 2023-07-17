@@ -137,8 +137,8 @@ class Http extends Client
             $publicParams['access_token'] = $this->app->getAccessToken();
         }
         //业务参数
-        ksort($params);
-        $params_json = \json_encode((object)$params, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        $params      = $this->ksort($params);
+        $params_json = str_replace("\b", '\u0008', json_encode((object)$params, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP));
 
         $string = 'app_key' . $publicParams['app_key'] . 'method' . $method . 'param_json' . $params_json . 'timestamp' . $publicParams['timestamp'] . 'v' . $publicParams['v'];
         $md5Str = $this->app->getAppSecret() . $string . $this->app->getAppSecret();
@@ -148,5 +148,32 @@ class Http extends Client
             'param_json' => $params_json,
             'sign'       => $sign,
         ]);
+    }
+
+    /**
+     * 将数组中的每个数组元素按照key自然排序
+     *
+     * @param array $array
+     * @param int $rule
+     * @return array
+     */
+    protected function ksort(array $array = [], int $rule = SORT_NATURAL)
+    {
+        $stack = [&$array];
+        for ($count = 1, $first = true; $count > 0; $first = true) {
+            ksort($stack[$count - 1], $rule);
+            foreach ($stack[--$count] as &$val) {
+                if ($first === true) {
+                    $first = false;
+                    array_pop($stack);
+                }
+                if (is_array($val)) {
+                    $stack[] = &$val;
+                    $count++;
+                }
+            }
+        }
+
+        return $array;
     }
 }
