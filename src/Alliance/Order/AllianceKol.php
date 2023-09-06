@@ -20,7 +20,7 @@ class AllianceKol extends BaseService
      *  time_type           String   否  查询时间类型。pay: 支付时间（默认）; update：联盟侧更新时间，非订单状态更新时间
      *  order_ids           String   否  订单号。多个订单号用英文,分隔，最多支持10个订单号
      * ]
-     * 获取用户信息
+     * 获得用户订单
      * @return mixed
      */
     public function getUserOrderList($params, $openId)
@@ -81,7 +81,7 @@ class AllianceKol extends BaseService
                 'open_id' => $open_id,
             ],
         ];
-        $endpoint = '/alliance/kol/reputation/';
+        $endpoint = '/alliance/store/add/';
         $url      = $this->host . $endpoint;
         $result   = $this->app->http->cusRequest('post', $url, $options, $headers);
         return $result;
