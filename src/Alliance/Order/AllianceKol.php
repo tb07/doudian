@@ -88,6 +88,32 @@ class AllianceKol extends BaseService
     }
 
     /**
+     * https://buyin.jinritemai.com/dashboard/service-provider/doc-center?docId=2320
+     * @param array $params
+     * [
+     *  page               int60     是  分页[1,20]
+     *  page_size          int64     是  每页的数量（小于等于20）
+     * ]
+     * 橱窗商品，需要用户授权。
+     * @param $openid
+     * @return mixed
+     */
+    public function userStoreList($params, $open_id)
+    {
+        $headers  = $this->headers();
+        $options  = [
+            'json'  => $params,
+            'query' => [
+                'open_id' => $open_id,
+            ],
+        ];
+        $endpoint = '/alliance/kol/store/list/';
+        $url      = $this->host . $endpoint;
+        $result   = $this->app->http->cusRequest('post', $url, $options, $headers);
+        return $result;
+    }
+
+    /**
      * https://buyin.jinritemai.com/dashboard/service-provider/doc-center?docId=2339&platform=1
      * @param string $open_id
      * 获取达人百应id
@@ -101,6 +127,32 @@ class AllianceKol extends BaseService
             'query' => ['open_id' => $open_id],
         ];
         $endpoint = '/alliance/kol/buyin_id/';
+        $url      = $this->host . $endpoint;
+        $result   = $this->app->http->cusRequest('post', $url, $options, $headers);
+        return $result;
+    }
+
+    /**
+     * https://buyin.jinritemai.com/dashboard/service-provider/doc-center?docId=2337
+     * @param array $params
+     * [
+     *  page               int60     是  分页[1,20]
+     *  page_size          int64     是  每页的数量（小于等于20）
+     * ]
+     * 接口用于查询机构单天选品订单号和订单GMV 主要是用于获取自定义数据
+     * @param $openid
+     * @return mixed
+     */
+    public function isvPickOrder($params, $open_id)
+    {
+        $headers  = $this->headers();
+        $options  = [
+            'json'  => $params,
+            'query' => [
+                'open_id' => $open_id,
+            ],
+        ];
+        $endpoint = '/alliance/isv/pick_order/';
         $url      = $this->host . $endpoint;
         $result   = $this->app->http->cusRequest('post', $url, $options, $headers);
         return $result;
