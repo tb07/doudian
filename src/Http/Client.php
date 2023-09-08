@@ -268,10 +268,6 @@ class Client
      */
     public function getHandler()
     {
-        if ($this->stack) {
-            return $this->stack;
-        }
-
         $stack = HandlerStack::create();
 
         foreach ($this->middlewares as $middleware) {
