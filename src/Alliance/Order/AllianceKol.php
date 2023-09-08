@@ -143,14 +143,11 @@ class AllianceKol extends BaseService
      * @param $openid
      * @return mixed
      */
-    public function isvPickOrder($params, $open_id)
+    public function isvPickOrder($params)
     {
         $headers  = $this->headers();
         $options  = [
-            'json'  => $params,
-            'query' => [
-                'open_id' => $open_id,
-            ],
+            'json' => $params,
         ];
         $endpoint = '/alliance/isv/pick_order/';
         $url      = $this->host . $endpoint;
