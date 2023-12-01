@@ -32,7 +32,7 @@ class Plan extends BaseService
     }
 
     /**
-     * 新的商品计划查询
+     * 商品策略列表查询
      * https://op.jinritemai.com/docs/api-docs/61/5758
      * @param array $params
      * @return mixed|\Psr\Http\Message\ResponseInterface
@@ -40,6 +40,17 @@ class Plan extends BaseService
     public function getBuyinPromotionStrategyList(array $params)
     {
         return $this->app->http->post('buyin/promotionStrategyList', $params);
+    }
+
+    /**
+     * 联盟商家-查询店铺联盟推广
+     * https://op.jinritemai.com/docs/api-docs/61/2408
+     * @param array $params
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     */
+    public function getBuyinQueryShopAllianceProducts(array $params)
+    {
+        return $this->app->http->post('/buyin/queryShopAllianceProducts', $params);
     }
 
     //商品定向计划管理 支持商家关闭/删除/恢复 定向计划。 注意：1. 关闭进行中的定向计划 自然日T+1生效（东八区）；2. 删除过期的定向计划实时生效，不能删除正在进行中的定向计划。
