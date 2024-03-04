@@ -32,8 +32,8 @@ class AllianceAuth extends BaseService
      * 请求获取 access_token.
      *
      * @param $code
-     *
      * @return mixed
+     * @see https://developer.open-douyin.com/docs/resource/zh-CN/dop/develop/openapi/account-permission/refresh-token
      */
     public function requestAccessToken($code)
     {
@@ -58,8 +58,7 @@ class AllianceAuth extends BaseService
      * 如果refresh_token也过期了，则只能让商家点击“使用”按钮，会打开应用使用地址，
      * 地址参数里会带上新的授权code。然后用新的code，重新调接口，获取新的access_token。
      *
-     * @see https://op.jinritemai.com/help/faq/43/206
-     *
+     * @see https://developer.open-douyin.com/docs/resource/zh-CN/dop/develop/openapi/account-permission/refresh-token
      * @param $refresh_token
      *
      * @return mixed
@@ -82,6 +81,28 @@ class AllianceAuth extends BaseService
     }
 
     /**
+     * 刷新 通过旧的 refresh_token 获取新的 refresh_token，调用后旧 refresh_token 会失效，新 refresh_token 有 30 天有效期。最多只能获取 5 次新的 refresh_token，5 次过后需要用户重新授权。
+     * @see https://developer.open-douyin.com/docs/resource/zh-CN/dop/develop/openapi/account-permission/refresh-token
+     * @param $refresh_token
+     * @return mixed
+     */
+    public function renewRefreshToken($refresh_token)
+    {
+        $params   = [
+            'client_key'    => $this->app->getAppKey(),
+            'refresh_token' => $refresh_token,
+        ];
+        $headers  = $this->headers();
+        $options  = [
+            'json' => $params,
+        ];
+        $endpoint = '/oauth/renew_refresh_token/';
+        $url      = $this->host . $endpoint;
+        $result   = $this->app->http->cusRequest('post', $url, $options);
+        return $result;
+    }
+
+    /**
      * 获取用户信息
      * @param $openid
      * @return mixed
@@ -98,7 +119,7 @@ class AllianceAuth extends BaseService
         ];
         $endpoint = '/oauth/userinfo/';
         $url      = $this->host . $endpoint;
-        $result   = $this->app->http->cusRequest('post', $url, $options,$headers);
+        $result   = $this->app->http->cusRequest('post', $url, $options, $headers);
         return $result;
     }
 

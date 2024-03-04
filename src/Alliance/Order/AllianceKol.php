@@ -88,6 +88,31 @@ class AllianceKol extends BaseService
     }
 
     /**
+     * https://buyin.jinritemai.com/dashboard/service-provider/doc-center?docId=2322
+     * @param array $params
+     * [
+     *  products               JSON     是  商品数据[{"product_id":"3450632721376902816","promotion_id":"3450632721374033833"}]
+     * ]
+     * 达人橱窗商品删除，需要用户授权。
+     * @param $openid
+     * @return mixed
+     */
+    public function userStoreRemove($params, $open_id)
+    {
+        $headers  = $this->headers();
+        $options  = [
+            'json'  => $params,
+            'query' => [
+                'open_id' => $open_id,
+            ],
+        ];
+        $endpoint = '/alliance/kol/store/remove/';
+        $url      = $this->host . $endpoint;
+        $result   = $this->app->http->cusRequest('post', $url, $options, $headers);
+        return $result;
+    }
+
+    /**
      * https://buyin.jinritemai.com/dashboard/service-provider/doc-center?docId=2320
      * @param array $params
      * [
