@@ -29,6 +29,8 @@ use Tb07\DouDian\Plan\Plan;
 use Tb07\DouDian\Plan\PlanProvider;
 use Tb07\DouDian\Product\Product;
 use Tb07\DouDian\Product\ProductProvider;
+use Tb07\DouDian\Shop\Shop;
+use Tb07\DouDian\Shop\ShopProvider;
 
 
 /**
@@ -47,6 +49,7 @@ use Tb07\DouDian\Product\ProductProvider;
  * @property-read AllianceAuth $allianceAuth
  * @property-read AllianceKol $allianceKol
  * @property-read AllianceOauth $allianceOauth
+ * @property-read Shop $shop
  */
 class DouDian extends Container
 {
@@ -65,6 +68,7 @@ class DouDian extends Container
         AllianceAuthProvider::class,
         AllianceKolProvider::class,
         AllianceOauthProvider::class,
+        ShopProvider::class,
     ];
 
     public function getAppKey()
