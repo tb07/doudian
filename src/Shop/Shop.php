@@ -45,4 +45,14 @@ class Shop extends BaseService
     {
         return $this->app->http->post('address/list', $params);
     }
+
+    /**
+     *获取店铺评分
+     * @see https://op.jinritemai.com/docs/api-docs/13/2658
+     * @param array $params
+     */
+    public function shopReputation(array $params)
+    {
+        return $this->app->http->post('/shop/reputation');
+    }
 }
