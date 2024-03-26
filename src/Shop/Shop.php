@@ -51,7 +51,7 @@ class Shop extends BaseService
      * @see https://op.jinritemai.com/docs/api-docs/13/2658
      * @param array $params
      */
-    public function shopReputation(array $params)
+    public function shopReputation()
     {
         return $this->app->http->post('/shop/reputation');
     }
