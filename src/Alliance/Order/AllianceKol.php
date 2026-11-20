@@ -180,6 +180,33 @@ class AllianceKol extends BaseService
         return $result;
     }
 
+    /**
+     * https://buyin.jinritemai.com/dashboard/service-provider/doc-center?docId=6399&platform=1
+     * @param array $params
+     * [
+     *  products               array     是  用户唯一标志 商品信息，最多20个商品
+     *  pick_extra             string    是  自定义参数，携带到订单（只允许 数字、字母和_，限制长度为20）
+     *  keep_picksource        string    是  是否保留商品链接原有选品来源，默认不保留（加橱窗时默认会生成新的选品来源参数覆盖旧参数，转链的自定义参数也会失效，此时选品来源为当前加橱窗应用），keep_picksource 为 true 时保留原有选品来源
+     * ]
+     * 添加商品(精选联盟商品)到达人选品车，需要用户授权。
+     * @param $openid
+     * @return mixed
+     */
+    public function userCardAdd($params, $open_id)
+    {
+        $headers  = $this->headers();
+        $options  = [
+            'json'  => $params,
+            'query' => [
+                'open_id' => $open_id,
+            ],
+        ];
+        $endpoint = '/alliance/card/add/';
+        $url      = $this->host . $endpoint;
+        $result   = $this->app->http->cusRequest('post', $url, $options, $headers);
+        return $result;
+    }
+
     protected function headers()
     {
         return [
